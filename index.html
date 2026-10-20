@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#d9607f">
+  <meta name="description" content="Giovanna Baby — body splash e loções hidratantes com fragrâncias que realçam sua essência.">
+  <title>Giovanna Baby — Fragrâncias que realçam sua essência</title>
+  <link rel="icon" href="data:,">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preload" as="image" href="assets/images/fundo%20-%20hero.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=Jost:wght@200;300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- Remove o fundo preto de imagens sem transparência (flores, esferas e logo): o alfa vem do brilho do pixel -->
+  <svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="sem-fundo-preto" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  2.4 2.4 1.2 0 -0.2"/>
+    </filter>
+  </svg>
+
+  <header class="site-header" id="topo">
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="nav" aria-expanded="false">Menu</button>
+
+    <nav class="nav" id="nav" aria-label="Navegação principal">
+      <div class="nav__group nav__group--start">
+        <a href="#inicio" aria-current="page">Início</a>
+        <a href="#novidades">Novidades</a>
+        <a href="#destaques">Produtos</a>
+      </div>
+      <div class="nav__group nav__group--end">
+        <a href="#fragrancias">Linhas</a>
+        <a data-link="sobre">Sobre nós</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </nav>
+
+    <!-- logo.png tem fundo preto (sem transparência): o CSS recorta a área útil em um selo arredondado -->
+    <a class="logo" href="#inicio" aria-label="Giovanna Baby — início">
+      <img class="logo__img" src="assets/images/logo.png" width="1600" height="900" alt="" decoding="async" fetchpriority="high">
+    </a>
+
+    <div class="tools">
+      <form class="search" id="search" role="search" action="#novidades">
+        <label class="sr-only" for="search-input">Buscar produtos</label>
+        <input id="search-input" name="q" type="search" placeholder="Buscar produtos" autocomplete="off">
+      </form>
+      <button class="icon-button" id="search-toggle" type="button" aria-label="Abrir busca" aria-controls="search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+      </button>
+      <a class="icon-button" href="https://wa.me/5511968737371?text=Ol%C3%A1%20Geovana%2C%20quero%20fazer%20um%20pedido%20de%20produto." target="_blank" rel="noopener" data-whatsapp aria-label="Fazer um pedido pelo WhatsApp (abre em nova aba)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.2 20 5.4 16A8.6 8.6 0 1 1 8.3 18.8Z"/><path class="fill" d="M9.1 7.7c.2-.3.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .5-.1.6l-.5.6c-.1.1-.1.3 0 .5a6 6 0 0 0 2.6 2.5c.2.1.4.1.5 0l.6-.7c.2-.2.4-.2.6-.1l1.6.7c.2.1.3.3.3.5v.6c0 .3-.1.5-.4.7-.5.4-1.2.6-1.9.5A6.6 6.6 0 0 1 8.6 9.6c-.1-.7.1-1.4.5-1.9Z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true"></div>
+
+      <!-- Nome ao fundo: o JS divide cada letra em duas peças que se afastam com a rolagem (data-puzzle) -->
+      <p class="hero__word" aria-hidden="true" data-puzzle>Geovana</p>
+
+      <div class="hero__intro" data-parallax="intro">
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__eyebrow">Fragrâncias que</span>
+          <span class="hero__headline">Realçam sua <strong>essência.</strong></span>
+        </h1>
+        <a class="hero__link" href="#novidades">Ver produtos <span class="hero__link-icon" aria-hidden="true"><span class="arrow">→</span></span></a>
+      </div>
+
+      <!-- Camadas: rosa atrás do frasco, flor de cerejeira à frente -->
+      <div class="hero__flower hero__flower--rose" data-parallax="rose" aria-hidden="true">
+        <img src="assets/images/flor%20-%20hero.jpg" width="960" height="712" alt="" decoding="async">
+      </div>
+      <div class="hero__product" data-parallax="product">
+        <img src="assets/images/img%20-%20hero%20produto%20-%201.png" width="1024" height="1536" alt="Body splash Giovanna Baby Rose, desodorante colônia 200 ml" fetchpriority="high">
+      </div>
+      <div class="hero__flower hero__flower--lily" data-parallax="lily" aria-hidden="true">
+        <img src="assets/images/flor%20-%20hero%202.jpg" width="1080" height="783" alt="" decoding="async">
+      </div>
+
+      <p class="hero__note" data-parallax="note"><strong>Um perfume delicado</strong> que permanece na pele.</p>
+    </section>
+
+    <section class="highlights" id="destaques" aria-label="Giovanna Baby em números">
+      <!--
+        ATENÇÃO: valores de referência visual, ainda NÃO confirmados pela Giovanna Baby.
+        Valide cada número e legenda antes da publicação. Para editar, altere o texto e o data-count
+        (valor final da contagem; use ponto para decimais e data-decimals para as casas);
+        --drop controla a altura de cada indicador (em múltiplos do tamanho do número).
+      -->
+      <ul class="highlights__figures" data-reveal>
+        <li class="figure" style="--drop: 0; --i: 0">
+          <p class="figure__value"><span class="figure__affix">+</span><span class="figure__num" data-count="12">12</span><span class="figure__unit">mil</span></p>
+          <p class="figure__label">Avaliações reais</p>
+        </li>
+        <li class="figure" style="--drop: 0.55; --i: 1">
+          <p class="figure__value"><span class="figure__num" data-count="4.8" data-decimals="1">4,8</span></p>
+          <p class="figure__label">Nota média</p>
+        </li>
+        <li class="figure" style="--drop: 0.12; --i: 2">
+          <p class="figure__value"><span class="figure__affix">+</span><span class="figure__num" data-count="40">40</span></p>
+          <p class="figure__label">Fragrâncias</p>
+        </li>
+        <li class="figure" style="--drop: 0.9; --i: 3">
+          <p class="figure__value"><span class="figure__num" data-count="100">100</span><span class="figure__unit">%</span></p>
+          <p class="figure__label">Cruelty free</p>
+        </li>
+      </ul>
+
+      <!-- Esferas: por enquanto todas usam esfera - 1.jpg. Para trocar, ajuste a imagem e o nome de cada <li>. -->
+      <ul class="highlights__products" data-reveal>
+        <li class="showcase" style="--i: 0">
+          <div class="showcase__media"><img src="assets/images/esfera%20-%201.jpg" width="1080" height="1080" alt="Body splash Giovanna Baby Rose em esfera translúcida" loading="lazy" decoding="async"></div>
+          <p class="showcase__name">Body splash</p>
+        </li>
+        <li class="showcase" style="--i: 1">
+          <div class="showcase__media"><img src="assets/images/esfera%20-%201.jpg" width="1080" height="1080" alt="Body splash Giovanna Baby Rose em esfera translúcida" loading="lazy" decoding="async"></div>
+          <p class="showcase__name">Loção hidratante</p>
+        </li>
+        <li class="showcase" style="--i: 2">
+          <div class="showcase__media"><img src="assets/images/esfera%20-%201.jpg" width="1080" height="1080" alt="Body splash Giovanna Baby Rose em esfera translúcida" loading="lazy" decoding="async"></div>
+          <p class="showcase__name">Linha Rose</p>
+        </li>
+        <li class="showcase" style="--i: 3">
+          <div class="showcase__media"><img src="assets/images/esfera%20-%201.jpg" width="1080" height="1080" alt="Body splash Giovanna Baby Rose em esfera translúcida" loading="lazy" decoding="async"></div>
+          <p class="showcase__name">Linha Blue</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="scents" id="fragrancias" aria-labelledby="fragrancias-title">
+      <header class="scents__head">
+        <h2 class="display-title" id="fragrancias-title">Celebrate Life,<span class="display-title__accent display-title__accent--indent">nota a nota.</span></h2>
+      </header>
+      <!--
+        Uma <article> por fragrância, na ordem em que aparecem (Rose → Gold → Blue).
+        Para trocar as imagens de uma fragrância, altere o fundo em .scent__scene e os frascos em .scent__product.
+        Nomes e descrições são provisórios — valide antes da publicação.
+        Por fragrância: --ink (textos), --shade (sombra na base do fundo), --tint (véu sobre o fundo) e --fit (reduz nomes longos).
+      -->
+      <div class="scents__track">
+      <div class="scents__stage">
+        <div class="scents__frame">
+          <article class="scent scent--rose" style="--tint: rgb(201 74 127 / 0.16); --shade: rgb(92 16 48 / 0.28)">
+            <div class="scent__scene" aria-hidden="true">
+              <img src="assets/images/fundo%20-%20hero.png" width="1671" height="941" alt="" loading="eager" decoding="async" fetchpriority="low">
+            </div>
+            <span class="scent__index" aria-hidden="true">01</span>
+            <div class="scent__notes">
+              <p class="scent__family">Linha Rose</p>
+              <p class="scent__text">Rosas frescas que despertam a pele com delicadeza.</p>
+              <p class="scent__list">Floral · Envolvente</p>
+            </div>
+            <h3 class="scent__name"><span>romance</span></h3>
+            <div class="scent__product scent__product--pair">
+              <img class="scent__splash" src="assets/images/img%20-%20hero%20produto%20-%201.png" width="1024" height="1536" alt="Body splash Giovanna Baby Rose" loading="eager" decoding="async" fetchpriority="low">
+              <img class="scent__lotion" src="assets/images/img%20hero%20produto%20-%202.png" width="1024" height="1536" alt="Loção hidratante Giovanna Baby Rose" loading="eager" decoding="async" fetchpriority="low">
+            </div>
+          </article>
+          <article class="scent scent--gold" style="--tint: rgb(255 255 255 / 0); --shade: rgb(110 70 12 / 0.4); --ink: #4b3110; --fit: 0.84">
+            <div class="scent__scene" aria-hidden="true">
+              <img src="assets/images/fundo%20se%C3%A7%C3%A3o%203%20-%202.png" width="1671" height="941" alt="" loading="eager" decoding="async" fetchpriority="low">
+            </div>
+            <span class="scent__index" aria-hidden="true">02</span>
+            <div class="scent__notes">
+              <p class="scent__family">Linha Gold</p>
+              <p class="scent__text">Um brilho caloroso que envolve a pele como luz dourada.</p>
+              <p class="scent__list">Calorosa · Sofisticada</p>
+            </div>
+            <h3 class="scent__name"><span>esplendor</span></h3>
+            <div class="scent__product scent__product--single" style="--h: 1.62">
+              <img src="assets/images/img%20-%20splash.png" width="1024" height="1536" alt="Body splash Giovanna Baby Gold" loading="eager" decoding="async" fetchpriority="low">
+            </div>
+          </article>
+          <article class="scent scent--blue" style="--tint: rgb(255 255 255 / 0); --shade: rgb(16 54 112 / 0.38); --ink: #123a66">
+            <div class="scent__scene" aria-hidden="true">
+              <img src="assets/images/fundo%20se%C3%A7%C3%A3o%203%20-%203.png" width="1671" height="941" alt="" loading="eager" decoding="async" fetchpriority="low">
+            </div>
+            <span class="scent__index" aria-hidden="true">03</span>
+            <div class="scent__notes">
+              <p class="scent__family">Linha Blue</p>
+              <p class="scent__text">Frescor leve, como uma brisa limpa sobre a pele.</p>
+              <p class="scent__list">Leve · Refrescante</p>
+            </div>
+            <h3 class="scent__name"><span>serena</span></h3>
+            <!-- "img - loção e splash azul.png" não tem transparência (o xadrez faz parte da imagem); este recorte é dos mesmos produtos. -->
+            <div class="scent__product scent__product--single" style="--h: 1.36">
+              <img src="assets/images/produtos/baby-blue-kit.webp" width="791" height="1200" alt="Body splash e loção hidratante Giovanna Baby Blue" loading="eager" decoding="async" fetchpriority="low">
+            </div>
+          </article>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section class="news" id="novidades" aria-labelledby="novidades-title">
+      <header class="news__head">
+        <h2 class="display-title news__title" id="novidades-title">Novidades<span class="display-title__accent">da estação.</span></h2>
+        <p class="news__lead">Fragrâncias novas, edição de<br class="br-wide"> aniversário e cuidados que acabaram<br class="br-wide"> de estrear</p>
+        <a class="news__cta" href="#novidades" data-news-filter="todos">Ver tudo no site <span class="news__cta-icon" aria-hidden="true">↗</span></a>
+      </header>
+
+      <div class="news__filters" role="group" aria-label="Filtrar por categoria">
+        <button class="chip" type="button" data-filter="todos" aria-pressed="true">Todos<sup class="chip__count"></sup></button>
+        <button class="chip" type="button" data-filter="perfumes" aria-pressed="false">Perfumes<sup class="chip__count"></sup></button>
+        <button class="chip" type="button" data-filter="corpo" aria-pressed="false">Corpo<sup class="chip__count"></sup></button>
+        <button class="chip" type="button" data-filter="cabelo" aria-pressed="false">Cabelo<sup class="chip__count"></sup></button>
+      </div>
+
+      <!--
+        data-category: uma ou mais categorias dos filtros, separadas por espaço (os contadores são calculados).
+        Selo e preço aparecem quando houver valores oficiais. Dentro de .pcard__media:
+          <span class="pcard__badge">-10%</span>
+        e depois de .pcard__name:
+          <p class="pcard__price"><s>R$ 00,00</s> R$ 00,00</p>
+      -->
+      <ul class="news__grid">
+        <li class="pcard" data-category="perfumes">
+          <div class="pcard__inner">
+            <div class="pcard__media">
+              <img class="pcard__img" src="assets/images/img%20-%20hero%20produto%20-%201.png" width="1024" height="1536" alt="Body Splash Rose" loading="lazy" decoding="async">
+              <button class="pcard__fav" type="button" data-fav="body-splash-rose" aria-pressed="false" aria-label="Favoritar Body Splash Rose"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3 4.6 13a4.7 4.7 0 0 1 6.7-6.7l.7.7.7-.7a4.7 4.7 0 0 1 6.7 6.7Z"/></svg></button>
+              <a class="pcard__bag" href="#contato" data-whatsapp aria-label="Comprar Body Splash Rose"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7Z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg></a>
+            </div>
+            <p class="pcard__meta">Deo colônia · 200 ml</p>
+            <h3 class="pcard__name">Body Splash Rose</h3>
+          </div>
+        </li>
+        <li class="pcard" data-category="perfumes corpo">
+          <div class="pcard__inner">
+            <div class="pcard__media">
+              <img class="pcard__img" src="assets/images/produtos/baby-gold-rose-kit.webp" width="779" height="1173" alt="Kit Gold Rose" loading="lazy" decoding="async">
+              <button class="pcard__fav" type="button" data-fav="kit-gold-rose" aria-pressed="false" aria-label="Favoritar Kit Gold Rose"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3 4.6 13a4.7 4.7 0 0 1 6.7-6.7l.7.7.7-.7a4.7 4.7 0 0 1 6.7 6.7Z"/></svg></button>
+              <a class="pcard__bag" href="#contato" data-whatsapp aria-label="Comprar Kit Gold Rose"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7Z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg></a>
+            </div>
+            <p class="pcard__meta">Kit · 2 itens</p>
+            <h3 class="pcard__name">Kit Gold Rose</h3>
+          </div>
+        </li>
+        <li class="pcard" data-category="perfumes">
+          <div class="pcard__inner">
+            <div class="pcard__media">
+              <img class="pcard__img" src="assets/images/produtos/baby-gold-body-splash.webp" width="261" height="1200" alt="Body Splash Gold" loading="lazy" decoding="async">
+              <button class="pcard__fav" type="button" data-fav="body-splash-gold" aria-pressed="false" aria-label="Favoritar Body Splash Gold"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3 4.6 13a4.7 4.7 0 0 1 6.7-6.7l.7.7.7-.7a4.7 4.7 0 0 1 6.7 6.7Z"/></svg></button>
+              <a class="pcard__bag" href="#contato" data-whatsapp aria-label="Comprar Body Splash Gold"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7Z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg></a>
+            </div>
+            <p class="pcard__meta">Deo colônia · 260 ml</p>
+            <h3 class="pcard__name">Body Splash Gold</h3>
+          </div>
+        </li>
+        <li class="pcard" data-category="corpo">
+          <div class="pcard__inner">
+            <div class="pcard__media">
+              <img class="pcard__img" src="assets/images/img%20hero%20produto%20-%202.png" width="1024" height="1536" alt="Loção Hidratante Rose" loading="lazy" decoding="async">
+              <button class="pcard__fav" type="button" data-fav="locao-rose" aria-pressed="false" aria-label="Favoritar Loção Hidratante Rose"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3 4.6 13a4.7 4.7 0 0 1 6.7-6.7l.7.7.7-.7a4.7 4.7 0 0 1 6.7 6.7Z"/></svg></button>
+              <a class="pcard__bag" href="#contato" data-whatsapp aria-label="Comprar Loção Hidratante Rose"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7Z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg></a>
+            </div>
+            <p class="pcard__meta">Desodorante corporal · 200 ml</p>
+            <h3 class="pcard__name">Loção Hidratante Rose</h3>
+          </div>
+        </li>
+        <li class="pcard" data-category="perfumes corpo">
+          <div class="pcard__inner">
+            <div class="pcard__media">
+              <img class="pcard__img" src="assets/images/produtos/baby-blue-kit.webp" width="791" height="1200" alt="Kit Blue" loading="lazy" decoding="async">
+              <button class="pcard__fav" type="button" data-fav="kit-blue" aria-pressed="false" aria-label="Favoritar Kit Blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3 4.6 13a4.7 4.7 0 0 1 6.7-6.7l.7.7.7-.7a4.7 4.7 0 0 1 6.7 6.7Z"/></svg></button>
+              <a class="pcard__bag" href="#contato" data-whatsapp aria-label="Comprar Kit Blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7Z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg></a>
+            </div>
+            <p class="pcard__meta">Kit · 2 itens</p>
+            <h3 class="pcard__name">Kit Blue</h3>
+          </div>
+        </li>
+        <li class="pcard" data-category="corpo">
+          <div class="pcard__inner">
+            <div class="pcard__media">
+              <img class="pcard__img" src="assets/images/produtos/baby-gold-locao.webp" width="518" height="1200" alt="Loção Hidratante Gold" loading="lazy" decoding="async">
+              <button class="pcard__fav" type="button" data-fav="locao-gold" aria-pressed="false" aria-label="Favoritar Loção Hidratante Gold"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3 4.6 13a4.7 4.7 0 0 1 6.7-6.7l.7.7.7-.7a4.7 4.7 0 0 1 6.7 6.7Z"/></svg></button>
+              <a class="pcard__bag" href="#contato" data-whatsapp aria-label="Comprar Loção Hidratante Gold"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7Z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg></a>
+            </div>
+            <p class="pcard__meta">Desodorante corporal · 200 ml</p>
+            <h3 class="pcard__name">Loção Hidratante Gold</h3>
+          </div>
+        </li>
+        <li class="pcard" data-category="perfumes">
+          <div class="pcard__inner">
+            <div class="pcard__media">
+              <img class="pcard__img" src="assets/images/produtos/aura-afrodite-garden-kit.webp" width="814" height="1148" alt="Kit Aura Afrodite Garden" loading="lazy" decoding="async">
+              <button class="pcard__fav" type="button" data-fav="aura-afrodite-garden" aria-pressed="false" aria-label="Favoritar Kit Aura Afrodite Garden"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3 4.6 13a4.7 4.7 0 0 1 6.7-6.7l.7.7.7-.7a4.7 4.7 0 0 1 6.7 6.7Z"/></svg></button>
+              <a class="pcard__bag" href="#contato" data-whatsapp aria-label="Comprar Kit Aura Afrodite Garden"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7Z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg></a>
+            </div>
+            <p class="pcard__meta">Deo colônia · 200 ml</p>
+            <h3 class="pcard__name">Kit Aura Afrodite Garden</h3>
+          </div>
+        </li>
+      </ul>
+      <p class="news__empty" hidden>Nenhum produto nesta categoria por enquanto.</p>
+    </section>
+
+    <!-- Seção 5: imagem editorial que se expande até a tela cheia ao entrar na tela (uma vez) -->
+    <section class="campaign" id="campanha" aria-label="Campanha: um universo rosa, agora em novos detalhes">
+      <figure class="campaign__frame">
+        <img class="campaign__img" src="assets/images/img%20-%20se%C3%A7%C3%A3o%205.png" width="1600" height="899" alt="Um universo rosa, agora em novos detalhes: modelo cercada por body splash, loções, séruns, cremes e perfumes da marca" loading="lazy" decoding="async">
+      </figure>
+    </section>
+
+  </main>
+
+  <!--
+    Links ainda sem destino (data-link): preencha a URL em PENDING_LINKS, no assets/js/main.js.
+    Enquanto estiverem vazios, aparecem como links desativados, sem levar a páginas inexistentes.
+  -->
+  <footer class="site-footer" id="contato" aria-label="Rodapé">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="footer__name">Geovana</p>
+        <p class="footer__sub">Cosméticos</p>
+        <p class="footer__tagline">Sua beleza, sua essência.</p>
+      </div>
+
+      <nav class="footer__col" aria-labelledby="footer-explore">
+        <h2 class="sr-only" id="footer-explore">Explore</h2>
+        <ul>
+          <li><a href="#novidades" data-news-filter="perfumes">Perfumes</a></li>
+          <li><a href="#novidades" data-news-search="body splash">Body Splash</a></li>
+          <li><a data-link="skin-care">Skin Care</a></li>
+          <li><a data-link="maquiagem">Maquiagem</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-labelledby="footer-help">
+        <h2 class="sr-only" id="footer-help">Atendimento</h2>
+        <ul>
+          <li><a data-link="sobre">Sobre nós</a></li>
+          <li><a data-link="trocas">Trocas e devoluções</a></li>
+          <li><a href="https://wa.me/5511968737371?text=Ol%C3%A1%20Geovana%2C%20quero%20fazer%20um%20pedido%20de%20produto." target="_blank" rel="noopener" data-whatsapp>Fale conosco</a></li>
+          <li><a data-link="privacidade">Política de privacidade</a></li>
+        </ul>
+      </nav>
+
+      <ul class="footer__social" aria-label="Redes sociais">
+        <li>
+          <a data-link="instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="fill" cx="17.2" cy="6.8" r="1.1"/></svg>
+          </a>
+        </li>
+        <li>
+          <a data-link="tiktok" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.8 3.8 0 1 1-3.8-3.8"/><path d="M14 3.5c.4 2.6 2.2 4.4 4.8 4.7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a data-link="youtube" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.8" y="5.5" width="18.4" height="13" rx="4"/><path class="fill" d="m10 9.2 5 2.8-5 2.8Z"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <p class="footer__legal">© 2026 Geovana Cosméticos. Todos os direitos reservados.</p>
+    <p class="footer__word" aria-hidden="true">Geovana</p>
+  </footer>
+</body>
+</html>
