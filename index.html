@@ -18,7 +18,7 @@
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- Remove o fundo preto de imagens sem transparência (flores, esferas e logo): o alfa vem do brilho do pixel -->
+  <!-- Remove o fundo preto de imagens sem transparência (flores e esferas): o alfa vem do brilho do pixel -->
   <svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
     <filter id="sem-fundo-preto" color-interpolation-filters="sRGB">
       <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  2.4 2.4 1.2 0 -0.2"/>
@@ -41,19 +41,15 @@
       </div>
     </nav>
 
-    <!-- logo.png tem fundo preto (sem transparência): o CSS recorta a área útil em um selo arredondado -->
+    <!-- logo.png já é transparente: o CSS enquadra só a área útil do nome, sem distorcer -->
     <a class="logo" href="#inicio" aria-label="Giovanna Baby — início">
-      <img class="logo__img" src="assets/images/logo.png" width="1600" height="900" alt="" decoding="async" fetchpriority="high">
+      <img class="logo__img" src="assets/images/logo.png" width="2145" height="733" alt="" decoding="async" fetchpriority="high">
     </a>
 
     <div class="tools">
-      <form class="search" id="search" role="search" action="#novidades">
-        <label class="sr-only" for="search-input">Buscar produtos</label>
-        <input id="search-input" name="q" type="search" placeholder="Buscar produtos" autocomplete="off">
-      </form>
-      <button class="icon-button" id="search-toggle" type="button" aria-label="Abrir busca" aria-controls="search" aria-expanded="false">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
-      </button>
+      <a class="icon-button" href="https://www.instagram.com/_geovanab.sz?psln=MWVjNWhodDZwYXE5aQ==" target="_blank" rel="noopener" data-link="instagram" aria-label="Instagram da Geovana (abre em nova aba)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="fill" cx="17.2" cy="6.8" r="1.1"/></svg>
+      </a>
       <a class="icon-button" href="https://wa.me/5511968737371?text=Ol%C3%A1%20Geovana%2C%20quero%20fazer%20um%20pedido%20de%20produto." target="_blank" rel="noopener" data-whatsapp aria-label="Fazer um pedido pelo WhatsApp (abre em nova aba)">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.2 20 5.4 16A8.6 8.6 0 1 1 8.3 18.8Z"/><path class="fill" d="M9.1 7.7c.2-.3.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .5-.1.6l-.5.6c-.1.1-.1.3 0 .5a6 6 0 0 0 2.6 2.5c.2.1.4.1.5 0l.6-.7c.2-.2.4-.2.6-.1l1.6.7c.2.1.3.3.3.5v.6c0 .3-.1.5-.4.7-.5.4-1.2.6-1.9.5A6.6 6.6 0 0 1 8.6 9.6c-.1-.7.1-1.4.5-1.9Z"/></svg>
       </a>
@@ -347,25 +343,15 @@
 
       <ul class="footer__social" aria-label="Redes sociais">
         <li>
-          <a data-link="instagram" aria-label="Instagram">
+          <a href="https://www.instagram.com/_geovanab.sz?psln=MWVjNWhodDZwYXE5aQ==" target="_blank" rel="noopener" data-link="instagram" aria-label="Instagram da Geovana (abre em nova aba)">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="fill" cx="17.2" cy="6.8" r="1.1"/></svg>
-          </a>
-        </li>
-        <li>
-          <a data-link="tiktok" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3.5v11.2a3.8 3.8 0 1 1-3.8-3.8"/><path d="M14 3.5c.4 2.6 2.2 4.4 4.8 4.7"/></svg>
-          </a>
-        </li>
-        <li>
-          <a data-link="youtube" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.8" y="5.5" width="18.4" height="13" rx="4"/><path class="fill" d="m10 9.2 5 2.8-5 2.8Z"/></svg>
           </a>
         </li>
       </ul>
     </div>
 
     <p class="footer__legal">© 2026 Geovana Cosméticos. Todos os direitos reservados.</p>
-    <p class="footer__word" aria-hidden="true">Geovana</p>
+    <p class="footer__word" aria-hidden="true" data-reveal><span>Geovana</span></p>
   </footer>
 </body>
 </html>

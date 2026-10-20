@@ -13,9 +13,7 @@ const PENDING_LINKS = {
   sobre: '',           // página institucional "Sobre nós"
   trocas: '',          // página de trocas e devoluções
   privacidade: '',     // página de política de privacidade
-  instagram: '',       // perfil oficial no Instagram
-  tiktok: '',          // perfil oficial no TikTok
-  youtube: '',         // canal oficial no YouTube
+  instagram: 'https://www.instagram.com/_geovanab.sz?psln=MWVjNWhodDZwYXE5aQ==', // perfil oficial no Instagram (header e rodapé)
 };
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -219,7 +217,17 @@ function setupReveal() {
     if (groups.every((el) => el.classList.contains('is-visible'))) observer.disconnect();
   }, { threshold: 0.35, rootMargin: '0px 0px -8% 0px' });
 
-  groups.forEach((el) => observer.observe(el));
+  // O nome do rodapé é baixo no celular e fica colado ao fim da página: com a margem de -8%
+  // ele nunca atingia 35% visível. Aqui basta metade dele aparecer, sem margem.
+  const end = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      show(entry.target);
+      end.unobserve(entry.target);
+    }
+  }, { threshold: 0.5 });
+
+  groups.forEach((el) => (el.matches('.footer__word') ? end : observer).observe(el));
 }
 
 /* ---------- Fragrâncias: troca guiada pela rolagem ---------- */
@@ -423,45 +431,8 @@ function setupMenu() {
   });
 }
 
-/* ---------- Busca de produtos ---------- */
-
+// Ignora acentos e maiúsculas ao filtrar a vitrine de novidades.
 const normalize = (text) => text.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
-
-function setupSearch(news) {
-  const form = document.getElementById('search');
-  const input = document.getElementById('search-input');
-  const toggle = document.getElementById('search-toggle');
-
-  const setOpen = (open) => {
-    form.classList.toggle('is-open', open);
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Buscar' : 'Abrir busca');
-    if (open) input.focus();
-  };
-
-  toggle.addEventListener('click', () => {
-    if (!form.classList.contains('is-open')) return setOpen(true);
-    form.requestSubmit();
-  });
-
-  // A busca filtra os produtos da vitrine de novidades.
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    news?.apply('todos', input.value);
-    document.getElementById('novidades').scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth' });
-  });
-
-  input.addEventListener('input', () => {
-    if (!input.value.trim()) news?.apply('todos');
-  });
-
-  input.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      setOpen(false);
-      toggle.focus();
-    }
-  });
-}
 
 /* ---------- Navegação ativa e WhatsApp ---------- */
 
@@ -530,7 +501,6 @@ setupScents();
 const news = setupNews();
 setupCampaign();
 setupMenu();
-setupSearch(news);
 setupActiveNav();
 setupWhatsApp();
 setupPendingLinks();

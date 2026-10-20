@@ -65,8 +65,9 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 /* Três colunas, laterais iguais: o logo fica no centro exato da largura total. */
 .site-header {
-  --logo-h: clamp(52px, 5vw, 74px);
-  --logo-w: calc(var(--logo-h) * 1.467);
+  /* o logo é um nome horizontal: a largura manda e a altura segue a proporção da área útil */
+  --logo-w: clamp(136px, 11.5vw, 190px);
+  --logo-h: calc(var(--logo-w) / 6.77);
   position: absolute; inset: 0 0 auto; z-index: 20;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -77,7 +78,8 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 .site-header > * { grid-row: 1; }
 
-/* Área útil do logo.png (1600×900); o fundo preto sai pelo filtro #sem-fundo-preto */
+/* logo.png (2145×733, fundo transparente): a caixa mostra só a área útil do nome
+   (x 121–2030, y 217–499 px, com folga) e a imagem mantém a proporção original */
 .logo {
   grid-column: 2;
   position: relative; display: block;
@@ -87,9 +89,8 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 .logo:hover { scale: 1.03; }
 .logo__img {
-  filter: url(#sem-fundo-preto);
-  position: absolute; left: -20.66%; top: -5.5%;
-  width: 139.5%; height: 115.09%;
+  position: absolute; left: -6.34%; top: -76.95%;
+  width: 112.36%; height: 259.93%;
   max-width: none;
 }
 
@@ -124,9 +125,8 @@ ul { list-style: none; margin: 0; padding: 0; }
 .nav a:hover::after,
 .nav a[aria-current]::after { transform: scaleX(1); }
 
-/* Busca e WhatsApp juntos, à direita */
+/* Instagram e WhatsApp juntos, à direita */
 .tools { grid-column: 3; justify-self: end; display: flex; align-items: center; gap: 4px; }
-.search { width: 0; }
 
 .icon-button {
   display: grid; place-items: center;
@@ -141,19 +141,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   stroke-linecap: round; stroke-linejoin: round;
 }
 .icon-button svg .fill { fill: currentColor; stroke: none; }
-
-.search input {
-  position: absolute; top: calc(100% - 10px); right: var(--gutter);
-  width: 0; padding: 6px 0;
-  background: none; border: 0; border-bottom: 1px solid transparent;
-  color: inherit; font: 400 0.8rem var(--sans); letter-spacing: 0.06em;
-  outline: none;
-  opacity: 0;
-  transition: width 0.5s var(--ease-out), opacity 0.3s, border-color 0.3s;
-}
-.search input::placeholder { color: inherit; opacity: 0.75; }
-.search input::-webkit-search-cancel-button { display: none; }
-.search.is-open input { width: clamp(120px, 14vw, 200px); opacity: 1; border-bottom-color: rgb(28 26 31 / 0.4); }
 
 .menu-toggle {
   display: none;
@@ -483,8 +470,8 @@ ul { list-style: none; margin: 0; padding: 0; }
 .js .highlights__products > .showcase {
   translate: 0 64px;
   scale: 0.96;
-  transition: opacity 1.4s ease, translate 1.9s var(--ease-out), scale 1.9s var(--ease-out);
-  transition-delay: calc(0.15s + var(--i, 0) * 0.2s);
+  transition: opacity 2.6s ease, translate 3.2s var(--ease-out), scale 3.2s var(--ease-out);
+  transition-delay: calc(0.3s + var(--i, 0) * 0.4s);
 }
 .js .highlights__products.is-visible > .showcase { translate: 0 0; scale: 1; }
 .js [data-reveal].is-visible > * { opacity: 1; translate: 0 0; }
@@ -513,7 +500,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .js .scents__track { height: 400vh; height: 400svh; }
 
 .scents__stage {
-  --pw: min(33svh, 19vw);            /* largura de referência dos frascos */
+  --pw: min(40svh, 23vw);            /* largura de referência dos frascos */
   --name: min(19vw, 33svh);          /* tamanho do nome da fragrância */
   position: relative;
 }
@@ -853,19 +840,27 @@ ul { list-style: none; margin: 0; padding: 0; }
   text-align: center;
 }
 
-/* Nome gigante, cortado na base como na referência */
+/* Nome gigante, inteiro, que sobe de baixo para cima ao entrar na tela */
 .footer__word {
-  margin: clamp(28px, 3vw, 48px) calc(var(--gutter) * -0.4) -0.2em;
+  margin: clamp(28px, 3vw, 48px) calc(var(--gutter) * -0.4) 0;
+  overflow: hidden; overflow: clip;  /* máscara: o nome nasce da base do rodapé */
   font-family: var(--display);
   font-weight: 700;
-  font-size: 21.5vw;
-  line-height: 1;
+  font-size: 19.5vw;
+  line-height: 1.04;
   letter-spacing: -0.055em;
   text-align: center;
   white-space: nowrap;
   color: var(--magenta);
   user-select: none;
 }
+.footer__word > span { display: block; }
+.js .footer__word > span {
+  opacity: 1;
+  translate: 0 105%;
+  transition: translate 1.8s var(--ease-out);
+}
+.js .footer__word.is-visible > span { translate: 0 0; }
 
 /* ---------- Campanha (seção 5): moldura que se expande ---------- */
 
@@ -905,7 +900,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 /* ---------- Cabeçalho compacto ---------- */
 
 @media (max-width: 1023px) {
-  .site-header { --logo-h: 44px; padding-block: 14px; }
+  .site-header { --logo-w: clamp(104px, 30vw, 150px); padding-block: 14px; }
   .menu-toggle { display: block; grid-column: 1; justify-self: start; }
   .tools { gap: 2px; }
 
@@ -925,8 +920,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   .nav a + a,
   .nav__group + .nav__group { border-top: 1px solid rgb(134 26 69 / 0.12); }
   .nav a::after { display: none; }
-
-  .search.is-open input { width: min(260px, calc(100vw - 2 * var(--gutter))); }
 
 }
 
@@ -996,7 +989,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 /* Fragrâncias: celular e tablet em retrato */
 @media (orientation: portrait) and (max-width: 1100px), (max-width: 560px) {
   .js .scents__track { height: 340vh; height: 340svh; }
-  .scents__stage { --pw: min(36svh, 52vw); --name: 21vw; }
+  .scents__stage { --pw: min(40svh, 60vw); --name: 21vw; }
   .scent__index { top: 28px; font-size: clamp(5rem, 24vw, 9rem); -webkit-text-stroke-width: 1.2px; }
   .scent__notes { left: var(--gutter); right: var(--gutter); top: calc(40px + clamp(5rem, 24vw, 9rem) * 0.8 + 6px); width: auto; max-width: 22rem; }
   .scent__text { font-size: 0.95rem; }
@@ -1036,7 +1029,8 @@ ul { list-style: none; margin: 0; padding: 0; }
   .js .hero__product img,
   .js .hero__flower img { opacity: 1; }
   .js [data-reveal] > *,
-  .js .highlights__products > .showcase { opacity: 1; translate: none; scale: none; transition: none; }
+  .js .highlights__products > .showcase,
+  .js .footer__word > span { opacity: 1; translate: none; scale: none; transition: none; }
   .js .scent__scene,
   .js .scent__product { filter: none; }
   .news__grid.is-curtain .pcard__inner,
