@@ -230,6 +230,35 @@ function setupReveal() {
   groups.forEach((el) => (el.matches('.footer__word') ? end : observer).observe(el));
 }
 
+/* ---------- Título revelado pela rolagem ---------- */
+
+// --p vai de 0 (topo do título entrando pela base da tela) a 1 (topo a 35% da altura da tela).
+function setupScrollText() {
+  const title = document.querySelector('[data-scroll-text]');
+  if (!title) return;
+
+  let raf = 0;
+  const render = () => {
+    raf = 0;
+    const top = title.getBoundingClientRect().top;
+    const vh = window.innerHeight;
+    title.style.setProperty('--p', reduceMotion.matches ? '1' : clamp((vh - top) / (vh * 0.65), 0, 1).toFixed(4));
+  };
+  const request = () => {
+    if (!raf) raf = requestAnimationFrame(render);
+  };
+
+  render();
+  const observer = new IntersectionObserver(([entry]) => {
+    const method = entry.isIntersecting ? 'addEventListener' : 'removeEventListener';
+    window[method]('scroll', request, { passive: true });
+    window[method]('resize', request);
+    if (entry.isIntersecting) request();
+  });
+  observer.observe(title);
+  reduceMotion.addEventListener('change', request);
+}
+
 /* ---------- Fragrâncias: troca guiada pela rolagem ---------- */
 
 // Fração do percurso usada para a vitrine crescer até a tela cheia.
@@ -497,6 +526,7 @@ setupPuzzle(hero.querySelector('[data-puzzle]'));
 revealHero(hero);
 setupParallax(hero);
 setupReveal();
+setupScrollText();
 setupScents();
 const news = setupNews();
 setupCampaign();

@@ -426,32 +426,38 @@ ul { list-style: none; margin: 0; padding: 0; }
   gap: clamp(28px, 4.4vw, 76px);
   margin-top: clamp(52px, 5.6vw, 88px);
 }
-.showcase { text-align: center; }
-/* esfera de vidro: a própria imagem (fundo preto removido pelo filtro) sobre uma sombra de contato */
+.showcase { --glow: rgb(176 40 92); text-align: center; }
+/* esfera de vidro flutuando sobre a própria sombra (--glow: cor de cada esfera, definida no HTML) */
 .showcase__media {
   position: relative;
   aspect-ratio: 1;
   isolation: isolate;
 }
+/* sombra elíptica sob a esfera: contato escuro e estreito + halo largo na cor da esfera */
 .showcase__media::after {
-  content: ''; position: absolute; left: 22%; right: 22%; bottom: 1%;
+  content: ''; position: absolute; left: 24%; right: 24%; bottom: -7%;
   height: 7%;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgb(176 40 92 / 0.2), rgb(176 40 92 / 0));
+  background: color-mix(in srgb, var(--glow) 30%, rgb(60 20 40 / 0.5));
+  box-shadow:
+    0 0 14px 4px color-mix(in srgb, var(--glow) 30%, transparent),
+    0 6px 34px 16px color-mix(in srgb, var(--glow) 14%, transparent);
+  filter: blur(5px);
+  opacity: 0.75;
   z-index: -1;
+  transition: scale 0.9s var(--ease-out), opacity 0.9s var(--ease-out);
 }
 .showcase__media img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: contain;
-  /* recorte circular rente à esfera (≈83% da imagem) para descartar ruído do JPEG nos cantos */
-  clip-path: circle(42.5% at 49.6% 50%);
-  filter: url(#sem-fundo-preto);
   transition: translate 0.9s var(--ease-out), scale 0.9s var(--ease-out);
 }
-.showcase:hover .showcase__media img { translate: 0 -6px; scale: 1.02; }
+/* ao passar o mouse a esfera sobe e a sombra se afasta (fica menor e mais clara) */
+.showcase:hover .showcase__media img { translate: 0 -8px; scale: 1.02; }
+.showcase:hover .showcase__media::after { scale: 0.86; opacity: 0.5; }
 .showcase__name {
-  margin-top: clamp(18px, 2vw, 28px);
+  margin-top: clamp(30px, 3.2vw, 44px);   /* espaço para a sombra sob a esfera */
   font-size: 0.66rem;
   font-weight: 400;
   letter-spacing: 0.28em;
@@ -489,6 +495,15 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 .display-title__accent { font-weight: 300; letter-spacing: -0.03em; color: var(--magenta); }
 .display-title__accent--indent { margin-left: 1.43em; }
+
+/* Revelação pela rolagem: --p (0–1) vem do JS; cada palavra entra na sua vez (--k) e leva ~metade do percurso */
+.scroll-word { display: inline-block; }
+.js [data-scroll-text] .scroll-word {
+  --q: clamp(0, (var(--p, 1) - var(--k, 0) * 0.12) / 0.52, 1);
+  opacity: var(--q);
+  translate: 0 calc((1 - var(--q)) * 0.35em);
+  filter: blur(calc((1 - var(--q)) * 10px));
+}
 
 .scents { position: relative; background: var(--white); }
 .scents__head {
@@ -1030,7 +1045,8 @@ ul { list-style: none; margin: 0; padding: 0; }
   .js .hero__flower img { opacity: 1; }
   .js [data-reveal] > *,
   .js .highlights__products > .showcase,
-  .js .footer__word > span { opacity: 1; translate: none; scale: none; transition: none; }
+  .js .footer__word > span,
+  .js [data-scroll-text] .scroll-word { opacity: 1; translate: none; scale: none; filter: none; transition: none; }
   .js .scent__scene,
   .js .scent__product { filter: none; }
   .news__grid.is-curtain .pcard__inner,

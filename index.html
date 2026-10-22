@@ -18,7 +18,7 @@
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- Remove o fundo preto de imagens sem transparência (flores e esferas): o alfa vem do brilho do pixel -->
+  <!-- Remove o fundo preto de imagens sem transparência (flores): o alfa vem do brilho do pixel -->
   <svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
     <filter id="sem-fundo-preto" color-interpolation-filters="sRGB">
       <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  2.4 2.4 1.2 0 -0.2"/>
@@ -111,30 +111,37 @@
         </li>
       </ul>
 
-      <!-- Esferas: por enquanto todas usam esfera - 1.jpg. Para trocar, ajuste a imagem e o nome de cada <li>. -->
+      <!--
+        Esferas: versões leves (WebP, fundo transparente) geradas a partir dos originais em assets/images.
+        --glow é a cor da sombra sob cada esfera; para trocar uma esfera, ajuste a imagem, o nome e a cor.
+      -->
       <ul class="highlights__products" data-reveal>
-        <li class="showcase" style="--i: 0">
-          <div class="showcase__media"><img src="assets/images/esfera%20-%201.jpg" width="1080" height="1080" alt="Body splash Giovanna Baby Rose em esfera translúcida" loading="lazy" decoding="async"></div>
-          <p class="showcase__name">Body splash</p>
-        </li>
-        <li class="showcase" style="--i: 1">
-          <div class="showcase__media"><img src="assets/images/esfera%20-%201.jpg" width="1080" height="1080" alt="Body splash Giovanna Baby Rose em esfera translúcida" loading="lazy" decoding="async"></div>
-          <p class="showcase__name">Loção hidratante</p>
-        </li>
-        <li class="showcase" style="--i: 2">
-          <div class="showcase__media"><img src="assets/images/esfera%20-%201.jpg" width="1080" height="1080" alt="Body splash Giovanna Baby Rose em esfera translúcida" loading="lazy" decoding="async"></div>
+        <li class="showcase" style="--i: 0; --glow: rgb(214 64 112)">
+          <div class="showcase__media"><img src="assets/images/esferas/rose.webp" width="640" height="640" alt="Body splash Giovanna Baby Rose em esfera rosa translúcida" loading="lazy" decoding="async"></div>
           <p class="showcase__name">Linha Rose</p>
         </li>
-        <li class="showcase" style="--i: 3">
-          <div class="showcase__media"><img src="assets/images/esfera%20-%201.jpg" width="1080" height="1080" alt="Body splash Giovanna Baby Rose em esfera translúcida" loading="lazy" decoding="async"></div>
+        <li class="showcase" style="--i: 1; --glow: rgb(58 132 214)">
+          <div class="showcase__media"><img src="assets/images/esferas/azul-bebe.webp" width="640" height="640" alt="Body splash Giovanna Baby Blue em esfera azul translúcida" loading="lazy" decoding="async"></div>
           <p class="showcase__name">Linha Blue</p>
+        </li>
+        <li class="showcase" style="--i: 2; --glow: rgb(196 140 34)">
+          <div class="showcase__media"><img src="assets/images/esferas/gold.webp" width="640" height="640" alt="Body splash Giovanna Baby Gold em esfera dourada translúcida" loading="lazy" decoding="async"></div>
+          <p class="showcase__name">Linha Gold</p>
+        </li>
+        <li class="showcase" style="--i: 3; --glow: rgb(16 132 116)">
+          <div class="showcase__media"><img src="assets/images/esferas/verde-marinho.webp" width="640" height="640" alt="Body splash Aura Afrodite Garden em esfera verde translúcida" loading="lazy" decoding="async"></div>
+          <p class="showcase__name">Afrodite Garden</p>
         </li>
       </ul>
     </section>
 
     <section class="scents" id="fragrancias" aria-labelledby="fragrancias-title">
       <header class="scents__head">
-        <h2 class="display-title" id="fragrancias-title">Celebrate Life,<span class="display-title__accent display-title__accent--indent">nota a nota.</span></h2>
+        <!-- Título revelado palavra a palavra conforme a rolagem (data-scroll-text; --k é a ordem de cada palavra) -->
+        <h2 class="display-title" id="fragrancias-title" data-scroll-text>
+          <span><span class="scroll-word" style="--k: 0">Celebrate</span> <span class="scroll-word" style="--k: 1">Life,</span></span>
+          <span class="display-title__accent display-title__accent--indent"><span class="scroll-word" style="--k: 2">nota</span> <span class="scroll-word" style="--k: 3">a</span> <span class="scroll-word" style="--k: 4">nota.</span></span>
+        </h2>
       </header>
       <!--
         Uma <article> por fragrância, na ordem em que aparecem (Rose → Gold → Blue).
